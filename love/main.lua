@@ -23,7 +23,8 @@ function love.draw()
 	tr:translate(0.5 * love.graphics.getWidth(), 0.5 * love.graphics.getHeight())
 	love.graphics.replaceTransform(tr)
 	
-	starbox(attitude)
+	local attmat = attitude:mat()
+	starbox(attmat)
 end
 
 function love.update(dt)

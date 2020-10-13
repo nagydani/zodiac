@@ -1,5 +1,4 @@
-function starbox(r)
-	local m = r:mat()
+function starbox(m)
 	local seed = {0x5A4A, 0x0248, 0xB753}
 
 	local function rl(a)
