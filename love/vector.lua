@@ -20,8 +20,15 @@ vec3D = {
 
 	scale = function(a, b)
 		return Vec3D(a[1] * b, a[2] * b, a[3] * b)
-	end
+	end,
 
+	unit = function(a)
+		return a:scale(1.0 / math.sqrt(a:dot(a)))
+	end,
+
+	rotate = function(a, m)
+		return Vec3D(a:dot(m[1]), a:dot(m[2]), a:dot(m[3]))
+	end
 }
 
 vec3D.__index = vec3D
@@ -33,6 +40,11 @@ function Vec3D(x, y, z)
 end
 
 ZeroVec3D = Vec3D(0, 0, 0)
+
+function halfArc(a, b)
+	local m = (a + b):scale(0.5)
+	return m:unit()
+end
 
 rot3D = {
 	__tostring = function(a)
@@ -84,3 +96,7 @@ end
 
 ZeroRot3D = Rot3D(1, ZeroVec3D)
 
+function RotAB(a, b)
+	local m = halfArc(a, b)
+	return Rot3D(a:dot(m), a * m)
+end

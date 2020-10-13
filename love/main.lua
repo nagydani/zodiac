@@ -2,6 +2,7 @@ function love.load()
 	dofile("waggle.lua")
 	dofile("vector.lua")
 	dofile("starbox.lua")
+	dofile("solardisc.lua")
 	dofile("control.lua")
 
 	attitude = ZeroRot3D
@@ -25,6 +26,9 @@ function love.draw()
 	
 	local attmat = attitude:mat()
 	starbox(attmat)
+
+	local sol = Vec3D(1000,400,750):rotate(attmat)
+	solardisc(sol, 100)
 end
 
 function love.update(dt)

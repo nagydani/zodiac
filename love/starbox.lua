@@ -1,3 +1,4 @@
+-- Draw starry sky corresponding to attitude rotation matrix m
 function starbox(m)
 	local seed = {0x5A4A, 0x0248, 0xB753}
 
